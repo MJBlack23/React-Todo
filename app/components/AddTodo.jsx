@@ -19,7 +19,7 @@ const AddTodo = React.createClass({
       <div>
         <form onSubmit={ this.handleSubmit }>
           <input type='text' className='form-control' ref='todoText' placeholder='What do you need to do?' />
-          <button type='submit' className='button hollow primary expanded'>Add Todo</button>
+          <button type='submit' className='button success expanded'>Add Todo</button>
         </form>
       </div>
     )
