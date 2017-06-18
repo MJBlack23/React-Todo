@@ -4,30 +4,21 @@ import uuid from 'node-uuid';
 import TodoList from 'TodoList';
 import AddTodo from 'AddTodo';
 import TodoSearch from 'TodoSearch';
+import RemoveTodos from 'RemoveTodos';
+
+// APIs
+import TodoAPI from 'TodoAPI';
 
 const TodoApp = React.createClass({
   getInitialState: function () {
     return {
-      todos: [
-        {
-          id: uuid(),
-          text: 'Walk the Dog',
-          completed: false
-        },
-        {
-          id: uuid(),
-          text: 'Clean the Yard',
-          completed: true
-        },
-        {
-          id: uuid(),
-          text: 'Master ReactJS',
-          completed: false
-        }
-      ],
+      todos: TodoAPI.getTodos(),
       showCompleted: false,
       searchText: ''
     }
+  },
+  componentDidUpdate: function () {
+    TodoAPI.setTodos(this.state.todos);
   },
   handleAddTodo: function (text) {
     let { todos } = this.state;
@@ -48,10 +39,16 @@ const TodoApp = React.createClass({
       }
       return todo;
     });
-    
+
     this.setState({
       todos
     })
+  },
+  handleRemoveTodos: function () {
+    TodoAPI.removeTodos();
+    this.setState({
+      todos: []
+    });
   },
   render: function () {
     let { todos } = this.state;
@@ -60,6 +57,7 @@ const TodoApp = React.createClass({
         <TodoSearch onSearch={ this.handleSearch } />
         <TodoList todos={ todos } onToggle={ this.handleToggle }/>
         <AddTodo onAddTodo={ this.handleAddTodo } />
+        <RemoveTodos onRemoveTodos={ this.handleRemoveTodos } />
       </div>
     )
   }
