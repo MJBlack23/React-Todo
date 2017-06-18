@@ -1,5 +1,7 @@
 import React from 'react';
 
+import RemoveTodos from 'RemoveTodos';
+
 const AddTodo = React.createClass({
   handleSubmit: function (e) {
     const { onAddTodo } = this.props;
@@ -16,11 +18,12 @@ const AddTodo = React.createClass({
   render: function () {
 
     return (
-      <div>
+      <div className='container__footer'>
         <form onSubmit={ this.handleSubmit }>
           <input type='text' className='form-control' ref='todoText' placeholder='What do you need to do?' />
-          <button type='submit' className='button success expanded'>Add Todo</button>
+          <button type='submit' className='button expanded'>Add Todo</button>
         </form>
+        <RemoveTodos onRemoveTodos={ this.props.onRemoveTodos } />
       </div>
     )
   }

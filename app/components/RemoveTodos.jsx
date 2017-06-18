@@ -7,7 +7,7 @@ const RemoveTodos = React.createClass({
   render: function () {
     return (
       <div>
-        <button type='button' className='button expanded alert' onClick={ this.handleRemove }>Reset Todos</button>
+        <button type='button' className='button expanded alert hollow' onClick={ this.handleRemove }>Reset Todos</button>
       </div>
     )
   }
