@@ -9,5 +9,20 @@ const Todo = require('Todo');
 describe('Todo', () => {
   it('should exist', () => {
     expect(Todo).toExist();
-  })
+  });
+
+  it('should call untoggle prop with id on click', () => {
+    let todoText = {
+      id: 11,
+      text: 'test features',
+      completed: true
+    }
+    let spy = expect.createSpy();
+    let todo = TestUtils.renderIntoDocument(<Todo { ...todoText } onToggle={ spy } />);
+
+    let $el = $(ReactDOM.findDOMNode(todo));
+    TestUtils.Simulate.click($el[0]);
+
+    expect(spy).toHaveBeenCalledWith(11);
+  });
 });
