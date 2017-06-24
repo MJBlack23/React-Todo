@@ -21,7 +21,7 @@ describe('Reducers', () => {
         type: 'TOGGLE_SHOW_COMPLETED'
       }
 
-      let response = reducers.toggleShowCompleted(df(false), df(action));
+      let response = reducers.showCompletedReducer(df(false), df(action));
       expect(response).toBe(true);
     });
 

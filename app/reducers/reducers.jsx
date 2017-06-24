@@ -12,7 +12,7 @@ export const searchTextReducer = (state = '', action) => {
   }
 }; // end searchTextReducer
 
-export const toggleShowCompleted = (state = false, action) => {
+export const showCompletedReducer = (state = false, action) => {
   switch (action.type) {
     case 'TOGGLE_SHOW_COMPLETED':
       return !state;
