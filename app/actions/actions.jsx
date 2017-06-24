@@ -19,7 +19,7 @@ export const toggleShowCompleted = () => {
   }
 };
 
-export const toggleID = (id) => {
+export const toggleTodos = (id) => {
   return {
     id,
     type: 'TOGGLE_TODO'

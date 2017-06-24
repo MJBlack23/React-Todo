@@ -36,7 +36,7 @@ describe('Actions', () => {
       type: 'TOGGLE_TODO',
       id: 15
     }
-    let response = actions.toggleID(action.id);
+    let response = actions.toggleTodos(action.id);
     expect(response).toEqual(action);
   });
 
