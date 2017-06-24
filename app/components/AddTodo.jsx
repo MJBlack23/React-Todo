@@ -26,7 +26,7 @@ export const AddTodo = React.createClass({
           <input type='text' className='form-control' ref='todoText' placeholder='What do you need to do?' />
           <button type='submit' className='button expanded'>Add Todo</button>
         </form>
-        <RemoveTodos onRemoveTodos={ this.props.onRemoveTodos } />
+        {/* <RemoveTodos onRemoveTodos={ this.props.onRemoveTodos } /> */}
       </div>
     )
   }
