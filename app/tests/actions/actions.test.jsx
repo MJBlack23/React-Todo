@@ -30,7 +30,7 @@ describe('Actions', () => {
     let action = {
       type: 'ADD_TODOS',
       todos
-    }
+    };
 
     let response = actions.addTodos(todos);
     expect(response).toEqual(action);
