@@ -1,7 +1,7 @@
 const expect = require('expect');
 const actions = require('actions');
 
-describe('actions', () => {
+describe('Actions', () => {
 
   it('should generate seach text action', () => {
     let action = {
