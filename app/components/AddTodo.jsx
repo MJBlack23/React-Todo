@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 const actions = require('actions');
-import { addTodo } from 'actions';
+import { startAddTodo } from 'actions';
 
 import RemoveTodos from 'RemoveTodos';
 
@@ -13,7 +13,7 @@ export const AddTodo = React.createClass({
 
     if (todoText.length > 0) {
       this.refs.todoText.value = "";
-      dispatch(addTodo(todoText));
+      dispatch(startAddTodo(todoText));
     } else {
       this.refs.todoText.focus();
     }

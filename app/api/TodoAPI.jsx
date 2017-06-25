@@ -33,7 +33,7 @@ module.exports = {
 
     // filter by searchText
     filteredTodos = filteredTodos.filter(todo => {
-      let todoText = todo.text.toLowerCase();
+      let todoText = (todo.text) ? todo.text.toLowerCase() : '';
       return searchText.length === 0 || todoText.indexOf(searchText) > -1;
     });
 

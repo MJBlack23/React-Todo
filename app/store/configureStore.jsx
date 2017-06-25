@@ -1,5 +1,6 @@
-const redux = require('redux');
-const { searchTextReducer, showCompletedReducer, todosReducer } = require('reducers');
+import * as redux from 'redux';
+import thunk from 'redux-thunk';
+import { searchTextReducer, showCompletedReducer, todosReducer } from 'reducers';
 
 export const configure = (initialState = {}) => {
   const reducer = redux.combineReducers({
@@ -12,7 +13,9 @@ export const configure = (initialState = {}) => {
   //   window.devToolsExtension ? window.devToolsExtension : f => f
   // ));
 
-  const store = redux.createStore(reducer, initialState);
+  const store = redux.createStore(reducer, initialState, redux.compose(
+    redux.applyMiddleware(thunk)
+  ));
 
   return store;
 };
