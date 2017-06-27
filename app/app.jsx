@@ -5,18 +5,11 @@ const { Route, Router, IndexRoute, hashHistory, browserHistory } = require('reac
 
 import TodoApp from 'TodoApp';
 
-const actions = require('actions');
+import * as actions from 'actions';
 const store = require('configureStore').configure();
 const TodoAPI = require('TodoAPI');
 
-store.subscribe(() => {
-  const state = store.getState();
-  console.log('New state', state);
-  TodoAPI.setTodos(state);
-});
-
-const initialTodos = TodoAPI.getTodos();
-store.dispatch(actions.addTodos(initialTodos));
+store.dispatch(actions.startAddTodos());
 
 // Load foundation
 $(document).foundation();

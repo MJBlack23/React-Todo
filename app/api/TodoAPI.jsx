@@ -1,28 +1,6 @@
 import $ from 'jQuery';
 
 module.exports = {
-  setTodos: function (todos) {
-    if ($.isArray(todos)) {
-      localStorage.setItem('todos', JSON.stringify(todos));
-    }
-    return todos;
-  },
-  getTodos: function () {
-    let stringTodos = localStorage.getItem('todos');
-    let todos = [];
-
-    try {
-      todos = JSON.parse(stringTodos);
-    } catch (e) {
-
-    }
-
-    return $.isArray(todos) ? todos : [];
-  },
-  removeTodos: function () {
-    localStorage.removeItem('todos');
-    return [];
-  },
   filterTodos: function (todos, showCompleted, searchText) {
     let filteredTodos = todos;
 
