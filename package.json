@@ -4,12 +4,12 @@
   "description": "Simple React Weather App",
   "main": "server.js",
   "scripts": {
-    "start": "npm run build && node server.js",
+    "start": "node server.js",
     "serve": "forever start server.js",
     "watch": "webpack -w",
-    "test": "set NODE_ENV=product&& karma start",
+    "test": "set NODE_ENV=production&& karma start",
     "deploy": "git push origin master && git push heroku master",
-    "build": "webpack"
+    "build": "set NODE_ENV=production&& webpack -p"
   },
   "author": "Matt Black",
   "license": "MIT",
