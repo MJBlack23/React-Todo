@@ -15,16 +15,16 @@ try {
 module.exports = {
   entry: [
     'script!jquery/dist/jquery.min.js',
-    'script!foundation-sites/dist/foundation.min.js',
+    'foundation-sites/dist/foundation.min.js',
     './app/app.jsx',
   ],
   externals: {
-    jquery: 'jquery'
+    jQuery: 'jquery'
   },
   plugins: [
     new webpack.ProvidePlugin({
       '$': 'jquery',
-      'jquery': 'jquery'
+      'jQuery': 'jquery'
     }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {

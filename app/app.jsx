@@ -11,11 +11,11 @@ const TodoAPI = require('TodoAPI');
 
 store.dispatch(actions.startAddTodos());
 
-// Load foundation
-$(document).foundation();
-
 // app css
 require('style!css!sass!applicationStyles');
+$(document).ready(() => {
+  $(document).foundation();
+});
 
 ReactDOM.render(
   <Provider store={ store }>
