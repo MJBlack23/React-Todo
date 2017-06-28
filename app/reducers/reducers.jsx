@@ -52,3 +52,19 @@ export const todosReducer = (state = [], action) => {
       return state;
   }
 }; // end addTodo
+
+export const authReducer = (state = {}, action) => {
+  switch (action.type) {
+    case 'LOGIN':
+      return {
+        ...state,
+        uid: action.uid
+      };
+
+    case 'LOGOUT':
+      return {};
+
+    default:
+      return state;
+  }
+}; // end auth reducer

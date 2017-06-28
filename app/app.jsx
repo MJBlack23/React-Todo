@@ -16,8 +16,6 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
-store.dispatch(startAddTodos());
-
 // app css
 require('style!css!sass!applicationStyles');
 $(document).ready(() => {

@@ -24,7 +24,8 @@ export const startAddTodo = (text) => {
       createdAt: moment().unix(),
       completedAt: null
     };
-    var todoRef = firebaseRef.child('todos').push(todo);
+    const uid = getState().auth.uid;
+    var todoRef = firebaseRef.child(`users/${uid}/todos`).push(todo);
 
     return todoRef.then(() => {
       dispatch(addTodo({
@@ -47,7 +48,8 @@ export const addTodos = (todos) => {
 
 export const startAddTodos = () => {
   return (dispatch, getState) => {
-    return firebaseRef.child('todos').once('value').then((ss) => {
+    const uid = getState().auth.uid;
+    return firebaseRef.child(`users/${uid}/todos`).once('value').then((ss) => {
       let data = ss.val() || [];
       let todos = Object.keys(data).map((key) => {
         return {
@@ -77,7 +79,8 @@ export const updateTodo = (id, updates) => {
 
 export const startToggleTodo = (id, completed) => {
   return (dispatch, getState) => {
-    let todoRef = firebaseRef.child(`todos/${id}`);
+    const uid = getState().auth.uid;
+    let todoRef = firebaseRef.child(`users/${uid}/todos/${id}`);
     let updates = {
       completed,
       completedAt: completed ? moment().unix() : null
@@ -94,9 +97,18 @@ export const startLogin = () => {
   return (dispatch, getState) => {
     return firebase.auth().signInWithPopup(githubProvider).then((response) => {
       console.log('Auth worked', response);
+      dispatch(login(response.user.uid));
+      dispatch(startAddTodos());
     }, (error) => {
       console.log(error);
     });
+  }
+};
+
+export const login = (uid) => {
+  return {
+    type: 'LOGIN',
+    uid
   }
 };
 
@@ -104,7 +116,13 @@ export const startLogin = () => {
 export const startLogout = () => {
   return (dispatch, getState) => {
     return firebase.auth().signOut().then(() => {
-      console.log('Logged out!');
+      dispatch(logout());
     });
   }
 };
+
+export const logout = () => {
+  return {
+    type: 'LOGOUT'
+  }
+}
