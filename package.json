@@ -9,7 +9,7 @@
     "watch": "webpack -w",
     "test": "set NODE_ENV=production&& karma start",
     "deploy": "git push origin master && git push heroku master",
-    "build": "set NODE_ENV=production&& webpack -p"
+    "build": "set NODE_ENV=production&& node server.js"
   },
   "author": "Matt Black",
   "license": "MIT",
