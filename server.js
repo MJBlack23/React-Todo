@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 
 // create the App
 const app = express();
@@ -17,6 +18,11 @@ app.use((req, res, next) => {
 });
 
 app.use(express.static('public'));
+
+app.route('/*')
+  .get((req, res) => {
+    res.sendFile(path.resolve(`${__dirname}/public/index.html`));
+  });
 
 app.listen(port, () => {
   console.log(`Express server is up on port ${port}`);
